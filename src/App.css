@@ -1,6 +1,20 @@
-button {
+/*.counter-row {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*   */
+/*    gap: 20px;*/
+
+
+.counter-row {
+display: grid;
+grid-template-columns: 120px 40px 40px 40px;
+align-items: center;
+margin-bottom: 10px;
+column-gap: 10px;
+}
+
+label {
     display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    gap: 10px;
+    flex-direction: column;
 }
