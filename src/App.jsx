@@ -1,5 +1,7 @@
 import './App.css'
 import {useState} from "react";
+import CounterButtons from './components/counterButtons/CounterButtons.jsx';
+
 
 function App() {
 
@@ -25,18 +27,20 @@ function App() {
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [buttonOptions, setButtonOptions] = useState("");
 
-    console.log({
-        firstName,
-        lastName,
-        age,
-        postalCode,
-        dayAndEveningButton,
-        commentsField,
-        termsAccepted,
-        buttonOptions
-    })
-
-
+    console.log(`
+        firstName: ${firstName}
+        lastName: ${lastName}
+        age:${age}
+        postalCode:${postalCode}
+        dayAndEveningButton: ${dayAndEveningButton}
+        commentsField: ${commentsField}
+        termsAccepted: ${termsAccepted}
+        buttonOptions: ${buttonOptions}
+        strawberry: ${strawberry}
+        banana:${banana}
+        apple: ${apple}
+        kiwi: ${kiwi}`
+    )
 
 
     function resetButton() {
@@ -55,75 +59,90 @@ function App() {
             <h1>Fruitmand bezorgservice</h1>
 
             <div className="counter-row">
-                <span>Aardbeien</span>
-                <button
-                    onClick={() => setStrawberry(strawberry - 1)}
+                <span>🍓Aardbeien</span>
+                <CounterButtons
+                    typeOfButton="button"
+                    idOfButton="decrease"
+                    nameOfButton="minus"
+                    onClickOfButton={() => setStrawberry(strawberry - 1)}
                     disabled={strawberry === 0}
-                >
-
-                    -
-                </button>
-
+                    textOnButton="-"
+                />
                 <p>{strawberry}</p>
 
-                <button onClick={() => setStrawberry(strawberry + 1)}>
-                    +
-                </button>
+                <CounterButtons
+                    typeOfButton="button"
+                    idOfButton="increase"
+                    nameOfButton="plus"
+                    onClickOfButton={() => setStrawberry(strawberry + 1)}
+                    textOnButton="+"
+                />
 
             </div>
 
             <div className="counter-row">
-                <span>Bananen</span>
-                <button
-                    onClick={() => setBanana(banana - 1)}
+                <span>🍌Bananen</span>
+                <CounterButtons
+                    typeOfButton="button"
+                    idOfButton="decrease"
+                    nameOfButton="minus"
+                    onClickOfButton={() => setBanana(banana - 1)}
                     disabled={banana === 0}
-                >
-                    -
-
-                </button>
-
+                    textOnButton="-"
+                />
                 <p>{banana}</p>
 
-                <button onClick={() => setBanana(banana + 1)}>
-                    +
-                </button>
-
-
+                <CounterButtons
+                    typeOfButton="button"
+                    idOfButton="increase"
+                    nameOfButton="plus"
+                    onClickOfButton={() => setBanana(banana + 1)}
+                    textOnButton="+"
+                />
             </div>
 
             <div className="counter-row">
-                <span>Appels</span>
-                <button onClick={() => setApple(apple - 1)}
-                        disabled={apple === 0}
-                >
-                    -
-                </button>
-
+                <span>🍏Appels</span>
+                <CounterButtons
+                    typeOfButton="button"
+                    idOfButton="decrease"
+                    nameOfButton="minus"
+                    onClickOfButton={() => setApple(apple - 1)}
+                    disabled={apple === 0}
+                    textOnButton="-"
+                />
                 <p>{apple}</p>
 
-                <button onClick={() => setApple(apple + 1)}>
-                    +
-                </button>
-
-
+                <CounterButtons
+                    typeOfButton="button"
+                    idOfButton="increase"
+                    nameOfButton="plus"
+                    onClickOfButton={() => setApple(apple + 1)}
+                    textOnButton="+"
+                />
             </div>
 
             <div className="counter-row">
-                <span>Kiwi s</span>
-                <button onClick={() => setKiwi(kiwi - 1)}
-                        disabled={kiwi === 0}
-                >
-                    -
-                </button>
-
+                <span>🥝Kiwi s</span>
+                <CounterButtons
+                    typeOfButton="button"
+                    idOfButton="decrease"
+                    nameOfButton="minus"
+                    onClickOfButton={() => setKiwi(kiwi - 1)}
+                    disabled={kiwi === 0}
+                    textOnButton="-"
+                />
                 <p>{kiwi}</p>
 
-                <button onClick={() => setKiwi(kiwi + 1)}>
-                    +
-                </button>
-
-
+                <CounterButtons
+                    typeOfButton="button"
+                    idOfButton="increase"
+                    nameOfButton="plus"
+                    onClickOfButton={() => setKiwi(kiwi + 1)}
+                    textOnButton="+"
+                />
             </div>
+
 
             <h2>Geselecteerde fruittypes: {SelectedFruitTypes}</h2>
 
@@ -132,6 +151,8 @@ function App() {
             </button>
 
             <form>
+                <fieldset>
+                    <legend>Bestelformulier</legend>
 
                     <label htmlFor="form-firtsname">
                         <p>Voornaam</p>
@@ -200,52 +221,52 @@ function App() {
                                 onChange={(e) => setDayAndEveningButton(e.target.value)}
                             />
                         </label>
-                            <p>Overdag</p>
+                        <p>Overdag</p>
 
-                        </label>
+                    </label>
 
-                        <label htmlFor="form-day-and-evening-button">
-                            <input
-                                type="radio"
-                                name="dayAndEveningButton"
-                                value="s-avonds"
-                                checked={dayAndEveningButton === "s-avonds"}
-                                onChange={(e) => setDayAndEveningButton(e.target.value)}
+                    <label htmlFor="form-day-and-evening-button">
+                        <input
+                            type="radio"
+                            name="dayAndEveningButton"
+                            value="s-avonds"
+                            checked={dayAndEveningButton === "s-avonds"}
+                            onChange={(e) => setDayAndEveningButton(e.target.value)}
 
-                            />
-                        </label>
-                            <p>`s Avonds</p>
-                            <label htmlFor="form-commentsfield">
-                                opmerking
-                                <textarea
-                                    id="form-commentsfield"
-                                    name="commentsField"
-                                    value={commentsField}
-                                    onChange={(e) => setCommentsField(e.target.value)}
+                        />
+                    </label>
+                    <p>s Avonds</p>
+                    <label htmlFor="form-commentsfield">
+                        <p>opmerking</p>
+                        <textarea
+                            id="form-commentsfield"
+                            name="commentsField"
+                            value={commentsField}
+                            onChange={(e) => setCommentsField(e.target.value)}
 
-                                />
-                            </label>
-                            <label htmlFor="form-termsaccepted">
-                                Ik ga akoord met de voorwaarden
-                                <input
-                                    type="checkbox"
-                                    id="form-termsaccepted"
-                                    name="termsAccepted"
-                                    checked={termsAccepted}
-                                    onChange={() => setTermsAccepted(!termsAccepted)}
-                                />
-                            </label>
+                        />
+                    </label>
+                    <label htmlFor="form-termsaccepted">
+                        Ik ga akkoord met de voorwaarden
+                        <input
+                            type="checkbox"
+                            id="form-termsaccepted"
+                            name="termsAccepted"
+                            checked={termsAccepted}
+                            onChange={() => setTermsAccepted(!termsAccepted)}
+                        />
+                    </label>
 
-                            <button type="submit">
-                                Verzend
-                            </button>
-
-
+                    <button type="submit">
+                        Verzend
+                    </button>
+                </fieldset>
             </form>
 
 
         </>
-);
+    )
+        ;
 }
 
 export default App
