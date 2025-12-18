@@ -1,7 +1,7 @@
 import './App.css'
 import {useState} from "react";
 import CounterButtons from './components/counterButtons/CounterButtons.jsx';
-
+import FormButton from './components/formButtons/FormButton.jsx';
 
 function App() {
 
@@ -26,6 +26,7 @@ function App() {
     const [commentsField, setCommentsField] = useState("");
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [buttonOptions, setButtonOptions] = useState("");
+
 
     console.log(`
         firstName: ${firstName}
@@ -146,50 +147,55 @@ function App() {
 
             <h2>Geselecteerde fruittypes: {SelectedFruitTypes}</h2>
 
-            <button onClick={resetButton}>
-                Reset
-            </button>
+            <FormButton
+                typeOfButton="reset"
+                idOfButton="reset-button"
+                nameOfButton="reset"
+                onClickOfButton={resetButton}
+                textOnButton="Reset
+                />
+
 
             <form>
                 <fieldset>
                     <legend>Bestelformulier</legend>
 
-                    <label htmlFor="form-firtsname">
+                    <label htmlFor=" form-firstname">
                         <p>Voornaam</p>
                         <input
-                            type="text"
-                            id="form-firstname"
-                            name="firtsName"
+                            type=" text"
+                            id=" formfirstname"
+                            name=" firstName"
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
                         />
                     </label>
 
-                    <label htmlFor="form-lastname">
+                    <label htmlFor=" form-lastname">
                         <p>Achternaam</p>
-                        <input type="text"
-                               id="form-lastname"
-                               name="lastName"
+                        <input type=" text"
+                               id=" formlastname"
+                               name=" lastName"
                                value={lastName}
                                onChange={(e) => setLastName(e.target.value)}
                         />
                     </label>
-                    <label htmlFor="form-age">
+                    <label htmlFor=" form-age">
                         <p>Leeftijd</p>
                         <input
-                            type="number"
-                            id="form-age"
-                            name="age"
+                            type=" number"
+                            id=" formage"
+                            name=" age"
                             value={age}
                             onChange={(e) => setAge(e.target.value)}
                         />
                     </label>
-                    <label htmlFor="form-postalcode">
+                    <label htmlFor=" form-postalcode">
                         <p>Postcode</p>
                         <input
-                            type="text"
-                            id="form-postalcode"
-                            name="postalCode"
+                            type=" text"
+                            id=" form-postalcode"
+                            name=" postalCode"
                             value={postalCode}
                             onChange={(e) => setPostalCode(e.target.value)}
                         />
@@ -197,57 +203,66 @@ function App() {
 
                     <h2>Bezorgfrequentie</h2>
 
-                    <label htmlFor="form-options">
+                    <label htmlFor=" form-options">
                         <select
-                            id="form-options"
-                            name="buttonOptions"
+                            id=" options "
+                            name=" buttonOptions"
                             value={buttonOptions}
                             onChange={(e) => setButtonOptions(e.target.value)}
                         >
                             <option value=" "></option>
-                            <option value="iedere week">iedere week</option>
-                            <option value="om de week">om de week</option>
-                            <option value="iedere maand">iedere maand</option>
+                            <option value=" iedere-week">iedere week</option>
+                            <option value=" om de week">om de week</option>
+                            <option value=" iedere maand">iedere maand</option>
 
 
                         </select>
-
-                        <label htmlFor="form-day-and-evening-button">
+                        <div className=" radiobuttons">
+                        <label htmlFor=" fordayandeveningbutton">
                             <input
-                                type="radio"
-                                name="dayAndEveningButton"
-                                value="overdag"
-                                checked={dayAndEveningButton === "overdag"}
+                                type=" radio"
+                                name=" dayAndEveningButton"
+                                value=" everyday"
+                                checked={dayAndEveningButton === " overdag"}
                                 onChange={(e) => setDayAndEveningButton(e.target.value)}
                             />
+                            <span>Overdag</span>
                         </label>
-                        <p>Overdag</p>
+                        </div>
+
+
+
 
                     </label>
 
-                    <label htmlFor="form-day-and-evening-button">
+                    <div className=" radio-buttons">
+                    <label htmlFor=" formdayandeveningbutton">
                         <input
-                            type="radio"
-                            name="dayAndEveningButton"
-                            value="s-avonds"
-                            checked={dayAndEveningButton === "s-avonds"}
+                            type=" radio"
+                            name=" dayAndEveningButton
+                            value={savonds}
+                            checked={dayAndEveningButton === " s-avonds"}
                             onChange={(e) => setDayAndEveningButton(e.target.value)}
-
                         />
+                        <span>s Avonds</span>
                     </label>
-                    <p>s Avonds</p>
-                    <label htmlFor="form-commentsfield">
+                    </div>
+
+
+
+                    <label htmlFor=" form-commentsfield">
                         <p>opmerking</p>
                         <textarea
-                            id="form-commentsfield"
+                            id="formcommentsfield"
                             name="commentsField"
                             value={commentsField}
                             onChange={(e) => setCommentsField(e.target.value)}
 
                         />
                     </label>
-                    <label htmlFor="form-termsaccepted">
-                        Ik ga akkoord met de voorwaarden
+
+                    <label htmlFor="formtermsaccepted">
+
                         <input
                             type="checkbox"
                             id="form-termsaccepted"
@@ -255,9 +270,13 @@ function App() {
                             checked={termsAccepted}
                             onChange={() => setTermsAccepted(!termsAccepted)}
                         />
+                        Ik ga akkoord met de voorwaarden
                     </label>
 
-                    <button type="submit">
+
+
+
+                    <button type=" submit">
                         Verzend
                     </button>
                 </fieldset>
@@ -265,8 +284,7 @@ function App() {
 
 
         </>
-    )
-        ;
+    );
 }
 
-export default App
+export default App;

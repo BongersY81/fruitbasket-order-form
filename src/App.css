@@ -15,3 +15,14 @@ label {
     flex-direction: column;
     width: 50%;
 }
+
+.radio-buttons input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+fieldset {
+    width :40%;
+}
